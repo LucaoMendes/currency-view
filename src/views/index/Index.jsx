@@ -12,10 +12,10 @@ function Index() {
         <h1>Currency in real Time!!</h1>
       </div>
       <div className="row">
-        <div className="col-8">
+        <div className="col-lg-8 col-12">
           <GraphContainer type='hours'/>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4 col-12">
           <GraphFilter/>
         </div>
       </div>
