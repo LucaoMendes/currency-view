@@ -1,0 +1,7 @@
+.graphContainer{
+    padding: 50px;
+    min-width: 600px;
+    background-color: white;
+    min-height: 200px;
+    border-radius: 20px;
+}

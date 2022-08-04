@@ -1,0 +1,20 @@
+
+.container{
+  width: 80vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #134647;
+  border-radius: 50px;
+  color:white;
+}
+.row {
+  margin:20px;
+  text-align: center;
+}
+*{
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  color:#e8ddcb;
+}
