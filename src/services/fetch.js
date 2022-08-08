@@ -1,4 +1,4 @@
-const URL = 'http://localhost:9090';
+const URL = 'https://lmcurrency-api.herokuapp.com/';
 const endpoints = {
     today: `${URL}/today`,
     lastWeek: `${URL}/lastWeek`,
