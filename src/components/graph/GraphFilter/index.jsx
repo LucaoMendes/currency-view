@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import './styles.css'
 
-function GraphFilter() {
+function GraphFilter(props) {
   const [count, setCount] = useState(0)
   const [initialDate, setInitialDate] = useState('');
   const [finalDate, setFinalDate] = useState('');
@@ -9,7 +9,6 @@ function GraphFilter() {
   const [invalidFinal,setInvalidFinal] = useState(false);
 
   const inputDate = useRef();
-
   function dateChange (date,initialDate = true) {
     
     const setFunction = initialDate ? setInitialDate : setFinalDate
@@ -25,8 +24,25 @@ function GraphFilter() {
   }
 
   function goButton(){
+    const tempInitial = new Date(initialDate)
+    const tempFinal = new Date(finalDate)
+
+    if(initialDate.length < 10 || tempInitial.getTime() > new Date().getTime())
+      return setInvalidInitial(true)
+
+    if(finalDate.length < 10 || tempFinal.getTime() > new Date().getTime())
+      return setInvalidFinal(true)
+
+    console.log(tempFinal.getTime() < tempInitial.getTime() )
+    
+    if(tempFinal.getTime() < tempInitial.getTime() ){
+      setInvalidInitial(true)
+      setInvalidFinal(true)
+      return false;
+    }
+
     if(!invalidInitial && !invalidFinal && initialDate.length > 0 && finalDate.length > 0){
-      console.log("GO")
+      return props.setType(`byDate;${initialDate};${finalDate}`)
     }
   }
   return (
@@ -35,9 +51,9 @@ function GraphFilter() {
       <hr />
      <div className="row">
       <div class="d-grid gap-2">
-        <button class="btn btn-primary" type="button">Last 7 hours</button>
-        <button class="btn btn-primary" type="button">Last 7 Days</button>
-        <button class="btn btn-primary" type="button">Last 7 Months</button>
+        <button class="btn btn-primary" type="button" onClick={ () => props.setType('hours') }>Last Hours</button>
+        <button class="btn btn-primary" type="button" onClick={ () => props.setType('week') }>Last Week</button>
+        <button class="btn btn-primary" type="button" onClick={ () => props.setType('month') }>Last Month</button>
       </div>
      </div>
      <hr />

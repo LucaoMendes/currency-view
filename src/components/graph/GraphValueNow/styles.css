@@ -1,0 +1,10 @@
+.valueContainer{
+    padding: 50px;
+    margin-top:10px;
+    min-width: 600px;
+    background-color: white;
+    min-height: 150px;
+    border-radius: 20px;
+    color:black;
+    font-size: x-large;
+}
