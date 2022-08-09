@@ -1,10 +1,11 @@
-const URL = 'https://lmcurrency-api.herokuapp.com/';
+const URL = 'https://lmcurrency-api.herokuapp.com';
 const endpoints = {
     today: `${URL}/today`,
     lastWeek: `${URL}/lastWeek`,
     lastMonth: `${URL}/lastMonth`,
     byDate: `${URL}/byDate?`,
     last: `${URL}/last`,
+    reloadCurrency: `${URL}/reloadCurrency`
 }
 
 export async function getLastHours(){
@@ -78,6 +79,12 @@ export async function getByDate(startDate,finalDate){
 
 export async function getLast(){
     try{
+        await fetch(endpoints.reloadCurrency , {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+            },
+        })
         const res = await fetch(endpoints.last , {
             method: 'GET',
             headers: {
